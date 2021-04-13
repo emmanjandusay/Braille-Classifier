@@ -32,11 +32,8 @@ def predictCell(image):
         print('Prediction is :', predictedClass)
 
         return predictedClass
-        #print('Recall xtest: ', recall_score(ytest, prediction, pos_label='positive', average='macro'))
-        #print('Precision xtest: ', precision_score(ytest, prediction, pos_label='positive', average='macro'))
-    
+
     else:
         print('Model not found...')
         predictedClass = "Model not found..."
         return predictedClass
-        #generate()
