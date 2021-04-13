@@ -30,6 +30,8 @@ def stream(label, predictLabel):
         
         if isClicked:
             img = getroi(frame)
+            text = "Predicting captured region..."
+            predictLabel.set(text)
             predClass = predictCell(img)
             text = "Predicted class: " + predClass
             predictLabel.set(text)
@@ -123,7 +125,7 @@ if __name__ == "__main__":
     button_predict.grid(row=2, column=0)
 
     predText = tk.StringVar()
-    predText.set("Prediction: ")
+    predText.set("On Standby")
     predict_label = tk.Label(root, textvariable=predText)
     predict_label.grid(row=1,column=0, columnspan=5)
 
