@@ -30,7 +30,8 @@ def stream(label, predictLabel):
         
         if isClicked:
             img = getroi(frame)
-            text = predictCell(img)
+            predClass = predictCell(img)
+            text = "Predicted class: " + predClass
             predictLabel.set(text)
             isClicked = False
 

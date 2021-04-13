@@ -37,6 +37,6 @@ def predictCell(image):
     
     else:
         print('Model not found...')
-        predictedClass = "Error: Model not found..."
+        predictedClass = "Model not found..."
         return predictedClass
         #generate()
