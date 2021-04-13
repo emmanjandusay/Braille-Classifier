@@ -40,6 +40,9 @@ def process_image(image):
 
     # Get HOG features
     image = hogProcess(image)
+    cv.imshow("Hog", image)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
 
     # Convert image to array
     image = np.array(image).flatten()
