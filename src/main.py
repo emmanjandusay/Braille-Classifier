@@ -68,10 +68,6 @@ def getroi(image):
 
     return cell
 
-    #cv2.imshow("Captured cell", cell)
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
-
 def getCoord(image):
     #Calculate center of image
     h, w, ch = image.shape
@@ -101,7 +97,6 @@ def subScale():
 def predictModel():
     global isClicked
     isClicked = True
-    #Code to predict captured cell here.
 
 if __name__ == "__main__":
 
