@@ -25,11 +25,18 @@ def predictCell(image):
         prediction = model.predict(image)
         accuracy = model.score(xtest, ytest)
 
-        print('Prediction Integer is :', prediction[0])
-        print('Prediction is :', categories[prediction[0]])
-        print('Recall xtest: ', recall_score(ytest, prediction, pos_label='positive', average='macro'))
-        print('Precision xtest: ', precision_score(ytest, prediction, pos_label='positive', average='macro'))
+        predInt = prediction[0]
+        predictedClass = categories[prediction[0]]
+
+        print('Prediction Integer is :', predInt)
+        print('Prediction is :', predictedClass)
+
+        return predictedClass
+        #print('Recall xtest: ', recall_score(ytest, prediction, pos_label='positive', average='macro'))
+        #print('Precision xtest: ', precision_score(ytest, prediction, pos_label='positive', average='macro'))
     
     else:
         print('Model not found...')
+        predictedClass = "Error: Model not found..."
+        return predictedClass
         #generate()

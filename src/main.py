@@ -15,7 +15,7 @@ scale=1
 capture_frame = np.zeros((1280,720,3), np.uint8)
 isClicked = False
 
-def stream(label):
+def stream(label, predictLabel):
     while(True):
         global capture_frame, isClicked
         ret, frame = cap.read()
@@ -30,7 +30,8 @@ def stream(label):
         
         if isClicked:
             img = getroi(frame)
-            predictCell(img)
+            text = predictCell(img)
+            predictLabel.set(text)
             isClicked = False
 
 def checkZoom(frame):
@@ -120,7 +121,9 @@ if __name__ == "__main__":
     button_predict = tk.Button(root, text="Predict", command=predictModel)
     button_predict.grid(row=2, column=0)
 
-    predict_label = tk.Label(root, text="Prediction: ")
+    predText = tk.StringVar()
+    predText.set("Prediction: ")
+    predict_label = tk.Label(root, textvariable=predText)
     predict_label.grid(row=1,column=0, columnspan=5)
 
     button_sub = tk.Button(root, text="-", command=addScale)
@@ -135,7 +138,7 @@ if __name__ == "__main__":
     button_exit = tk.Button(root, text="Exit", command=root.quit)
     button_exit.grid(row=2, column=4)
 
-    thread = threading.Thread(target=stream, args=(my_label,))
+    thread = threading.Thread(target=stream, args=(my_label, predText,))
     thread.daemon = 1
     thread.start()
     root.mainloop()
