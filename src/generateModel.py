@@ -90,7 +90,9 @@ def updateModel(data):
     model.fit(xtrain, ytrain)
 
     pick = open('braille-ELM.sav','rb')
+    pickle.dump(model,pick)
     model = pickle.load(pick)
+    pick.close()
 
     return model, xtrain, xtest, ytrain, ytest
     

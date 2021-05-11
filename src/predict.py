@@ -4,9 +4,7 @@ import os.path
 import matplotlib.pyplot as plt
 
 from preproc import process_image
-from generateModel import generate, getPickle, updateModel
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, r2_score, recall_score, precision_score, f1_score, plot_confusion_matrix, ConfusionMatrixDisplay
-
+from generateModel import getPickle, updateModel
 def predictCell(image):
     categories = ['binata', 'buhay', 'dalaga', 'eksamen', 'ewan', 'gunita', 'halaman', 'hapon', 'isip', 'kailangan',
              'karaniwan', 'kislap', 'larawan', 'mabuti', 'noon', 'opo', 'papaano', 'patuloy', 'roon', 'subalit',
