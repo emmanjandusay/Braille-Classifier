@@ -47,13 +47,10 @@ def generateELM():
     features = []
     labels = []
 
-    pick_in = open('braille-model.pickle', 'rb')
-    data = pickle.load(pick_in)
-    pick_in.close()
+    data = getPickle()
+    random.shuffle(data)
 
     print('Generating ELM model...')
-
-    random.shuffle(data)
 
     for feature, label in data:
         features.append(feature)
@@ -68,18 +65,14 @@ def generateELM():
     pickle.dump(model,pick)
     pick.close()
 
-def updateModel(data):
-    random.shuffle(data)
+def updateModel():
     features = []
     labels = []
 
-    pick_in = open('braille-model.pickle', 'rb')
-    data = pickle.load(pick_in)
-    pick_in.close()
+    data = getPickle()
+    random.shuffle(data)
 
     print('Updating model...')
-    
-    random.shuffle(data)
 
     for feature, label in data:
         features.append(feature)

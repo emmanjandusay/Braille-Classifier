@@ -15,8 +15,7 @@ def predictCell(image):
 
     if os.path.isfile('braille-model.pickle'):
         print('Model found...')
-        pickle = getPickle()
-        model, xtrain, xtest, ytrain, ytest = updateModel(pickle)
+        model, xtrain, xtest, ytrain, ytest = updateModel()
 
         print('Predicting captured cell...')
 
@@ -34,8 +33,7 @@ def predictCell(image):
     else:
         print('Model not found...')
         generatePickle()
-        pickle = getPickle()
-        model, xtrain, xtest, ytrain, ytest = updateModel(pickle)
+        model, xtrain, xtest, ytrain, ytest = updateModel()
 
         print('Predicting captured cell...')
 
@@ -47,5 +45,5 @@ def predictCell(image):
 
         print('Prediction Integer is :', predInt)
         print('Prediction is :', predictedClass)
-        
+
         return predictedClass
