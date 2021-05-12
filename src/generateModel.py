@@ -89,7 +89,7 @@ def updateModel(data):
     model = ELMClassifier(n_hidden=500, activation_func='multiquadric')
     model.fit(xtrain, ytrain)
 
-    pick = open('braille-ELM.sav','rb')
+    pick = open('braille-ELM.sav','wb')
     pickle.dump(model,pick)
     model = pickle.load(pick)
     pick.close()
