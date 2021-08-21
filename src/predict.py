@@ -4,7 +4,7 @@ import os.path
 import matplotlib.pyplot as plt
 
 from preproc import process_image
-from generateModel import getPickle, generatePickle, updateModel
+from generateModel import getModel, generatePickle, updateModel
 def predictCell(image):
     categories = ['binata', 'buhay', 'dalaga', 'eksamen', 'ewan', 'gunita', 'halaman', 'hapon', 'isip', 'kailangan',
              'karaniwan', 'kislap', 'larawan', 'mabuti', 'noon', 'opo', 'papaano', 'patuloy', 'roon', 'subalit',
@@ -15,12 +15,11 @@ def predictCell(image):
 
     if os.path.isfile('braille-model.pickle'):
         print('Model found...')
-        model, xtrain, xtest, ytrain, ytest = updateModel()
+        model = getModel()
 
         print('Predicting captured cell...')
 
         prediction = model.predict(image)
-        accuracy = model.score(xtest, ytest)
 
         predInt = prediction[0]
         predictedClass = categories[prediction[0]]
@@ -33,12 +32,11 @@ def predictCell(image):
     else:
         print('Model not found...')
         generatePickle()
-        model, xtrain, xtest, ytrain, ytest = updateModel()
+        model = getModel()
 
         print('Predicting captured cell...')
 
         prediction = model.predict(image)
-        accuracy = model.score(xtest, ytest)
 
         predInt = prediction[0]
         predictedClass = categories[prediction[0]]
